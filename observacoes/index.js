@@ -52,10 +52,12 @@ app.get('/lembretes/:id/observacoes', (req, res) => {
 });
 
 app.post("/eventos", (req, res) => {
-    funcoes[req.body.tipo](req.body.status);
+    try{
+        funcoes[req.body.tipo](req.body.dados);
+    } catch (err) {}
     res.status(200).send({msg: "ok"});
 })
 
 app.listen(5000, () => {
-    console.log('Lembretes. Porta 5000.')
+    console.log('Observações. Porta 5000.')
 });
